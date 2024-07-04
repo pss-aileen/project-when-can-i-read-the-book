@@ -1,13 +1,84 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>この本いつ読める？ When can I read the book?</title>
+</head>
+
+<body>
+  <section class="wrapper">
+    <h1>この本いつ読める？</h1>
+
+    <p>福岡市図書館で本を予約した際・最短、最長でいつ借りれるかを簡易的に計算できるサイトです。</p>
+
+    <form>
+      <section class="content">
+        <h2>基本情報</h2>
+        <table>
+          <tr>
+            <th>予約日</th>
+            <td><input type="date" name="reservedDate" value="2024-07-05"></td>
+          </tr>
+          <tr>
+            <th>予約順</th>
+            <td><input type="number" name="order" min="1" max="999" value="1"></td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="content">
+        <h2>オプション</h2>
+        <p>デフォルトは最短になっています。最長を確認したい場合は全て最後の選択肢を選んでください。</p>
+        <fieldset>
+          <legend>同じ図書館か？</legend>
+          <label>
+            <input type="radio" name="isSameLibrary" value="true" checked>
+            <span>同じ図書館</span>
+          </label>
+          <label>
+            <input type="radio" name="isSameLibrary" value="false">
+            <span>違う図書館</span>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>取り置き期間は？</legend>
+          <label>
+            <input type="radio" name="holdPeriod" id="shortest" checked>
+            <span>最短（予約連絡前、割り当て当日）</span>
+          </label>
+          <label>
+            <input type="radio" name="holdPeriod" id="normal">
+            <span>通常（予約連絡日）</span>
+          </label>
+          <label>
+            <input type="radio" name="holdPeriod" id="longest">
+            <span>最長（取り置き期間最終日）</span>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>返却日は？</legend>
+          <label>
+            <input type="radio" name="isOnBussinessDay" value="true" checked>
+            <span>営業日</span>
+          </label>
+          <label>
+            <input type="radio" name="isOnBussinessDay" value="false">
+            <span>休館日あり</span>
+          </label>
+        </fieldset>
+      </section>
+    </form>
+
+    <div class="content">
+      <h2>結果</h2>
+      <p id="result">2024年7月5日（金）</p>
+    </div>
+
+  </section><!--wrapper-->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
