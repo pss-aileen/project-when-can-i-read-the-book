@@ -10,9 +10,9 @@ button?.addEventListener("click", (e) => {
   const reservedDate = (
     infoForm.elements.namedItem("reservedDate") as HTMLInputElement
   ).value;
-  const reservedOrder = (
-    infoForm.elements.namedItem("reservedOrder") as HTMLInputElement
-  ).value;
+  const reservedOrder: number = Number(
+    (infoForm.elements.namedItem("reservedOrder") as HTMLInputElement).value,
+  );
   const isSameLibrary =
     (infoForm.elements.namedItem("isSameLibrary") as RadioNodeList).value ===
     "true"
@@ -27,7 +27,7 @@ button?.addEventListener("click", (e) => {
       ? true
       : false;
 
-  console.log(reservedDate, reservedOrder);
+  console.log(reservedDate);
 
   const DaysLibraryDelivery: number = isSameLibrary ? 0 : 1;
   const DaysLibraryHold: number =
@@ -40,7 +40,9 @@ button?.addEventListener("click", (e) => {
     DaysPersonBorrow,
   );
 
-  console.log(totalDaysPerPerson);
+  const totalDays: number = totalDaysPerPerson * reservedOrder;
+
+  console.log(totalDaysPerPerson, totalDays);
 });
 
 function calculateTotalDaysPerPerson(
