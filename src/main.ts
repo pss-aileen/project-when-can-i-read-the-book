@@ -7,9 +7,9 @@ button?.addEventListener("click", (e) => {
   e.preventDefault();
 
   const infoForm = document.forms.namedItem("info") as HTMLFormElement;
-  const reservedDate = (
-    infoForm.elements.namedItem("reservedDate") as HTMLInputElement
-  ).value;
+  const reservedDate = new Date(
+    (infoForm.elements.namedItem("reservedDate") as HTMLInputElement).value,
+  );
   const reservedOrder: number = Number(
     (infoForm.elements.namedItem("reservedOrder") as HTMLInputElement).value,
   );
@@ -43,6 +43,10 @@ button?.addEventListener("click", (e) => {
   const totalDays: number = totalDaysPerPerson * reservedOrder;
 
   console.log(totalDaysPerPerson, totalDays);
+
+  reservedDate.setDate(reservedDate.getDate() + totalDays);
+
+  console.log(reservedDate);
 });
 
 function calculateTotalDaysPerPerson(
