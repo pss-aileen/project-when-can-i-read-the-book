@@ -14,7 +14,7 @@
 
     <p>福岡市図書館で本を予約した際・最短、最長でいつ借りれるかを簡易的に計算できるサイトです。</p>
 
-    <form>
+    <form name="info">
       <section class="content">
         <h2>基本情報</h2>
         <table>
@@ -24,7 +24,7 @@
           </tr>
           <tr>
             <th>予約順</th>
-            <td><input type="number" name="order" min="1" max="999" value="1"></td>
+            <td><input type="number" name="reservedOrder" min="1" max="999" value="1"></td>
           </tr>
         </table>
       </section>
@@ -46,30 +46,32 @@
         <fieldset>
           <legend>取り置き期間は？</legend>
           <label>
-            <input type="radio" name="holdPeriod" id="shortest" checked>
+            <input type="radio" name="holdPeriod" value="shortest" checked>
             <span>最短（予約連絡前、割り当て当日）</span>
           </label>
           <label>
-            <input type="radio" name="holdPeriod" id="normal">
+            <input type="radio" name="holdPeriod" value="normal">
             <span>通常（予約連絡日）</span>
           </label>
           <label>
-            <input type="radio" name="holdPeriod" id="longest">
+            <input type="radio" name="holdPeriod" value="longest">
             <span>最長（取り置き期間最終日）</span>
           </label>
         </fieldset>
         <fieldset>
           <legend>返却日は？</legend>
           <label>
-            <input type="radio" name="isOnBussinessDay" value="true" checked>
+            <input type="radio" name="isOnBusinessDay" value="true" checked>
             <span>営業日</span>
           </label>
           <label>
-            <input type="radio" name="isOnBussinessDay" value="false">
+            <input type="radio" name="isOnBusinessDay" value="false">
             <span>休館日あり</span>
           </label>
         </fieldset>
       </section>
+
+      <button type="submit">計算</button>
     </form>
 
     <div class="content">

@@ -60,3 +60,8 @@ table {
 fieldset {
   margin-top: 16px;
 }
+
+button {
+  margin-top: 16px;
+  font-size: 16px;
+}
