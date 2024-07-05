@@ -27,32 +27,26 @@ button?.addEventListener("click", (e) => {
       ? true
       : false;
 
-  console.log(
-    reservedDate,
-    reservedOrder,
-    isSameLibrary,
-    holdPeriod,
-    isOnBusinessDay,
-  );
+  console.log(reservedDate, reservedOrder);
 
   const DaysLibraryDelivery: number = isSameLibrary ? 0 : 1;
   const DaysLibraryHold: number =
     holdPeriod === "shortest" ? 0 : holdPeriod === "normal" ? 1 : 7;
   const DaysPersonBorrow: number = isOnBusinessDay ? 14 : 15;
 
-  console.log(DaysLibraryDelivery, DaysLibraryHold, DaysPersonBorrow);
+  const totalDaysPerPerson = calculateTotalDaysPerPerson(
+    DaysLibraryDelivery,
+    DaysLibraryHold,
+    DaysPersonBorrow,
+  );
+
+  console.log(totalDaysPerPerson);
 });
 
 function calculateTotalDaysPerPerson(
   DaysLibraryDelivery: number,
   DaysLibraryHold: number,
   DaysPersonBorrow: number,
-): number | undefined {
-  if (!DaysLibraryDelivery || !DaysLibraryDelivery || !DaysPersonBorrow) {
-    return;
-  }
-
+): number {
   return DaysLibraryDelivery + DaysLibraryHold + DaysPersonBorrow;
 }
-
-console.log(calculateTotalDaysPerPerson(1, 2, 3));
