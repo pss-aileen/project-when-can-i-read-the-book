@@ -3,7 +3,6 @@ import "./style.css";
 const button = document.querySelector("button");
 
 button?.addEventListener("click", (e) => {
-  // ページ遷移のを防ぐ、でも理解不十分。
   e.preventDefault();
 
   const infoForm = document.forms.namedItem("info") as HTMLFormElement;
@@ -27,8 +26,6 @@ button?.addEventListener("click", (e) => {
       ? true
       : false;
 
-  console.log(reservedDate);
-
   const DaysLibraryDelivery: number = isSameLibrary ? 0 : 1;
   const DaysLibraryHold: number =
     holdPeriod === "shortest" ? 0 : holdPeriod === "normal" ? 1 : 7;
@@ -42,11 +39,20 @@ button?.addEventListener("click", (e) => {
 
   const totalDays: number = totalDaysPerPerson * reservedOrder;
 
-  console.log(totalDaysPerPerson, totalDays);
-
   reservedDate.setDate(reservedDate.getDate() + totalDays);
 
-  console.log(reservedDate);
+  const expectedYear = reservedDate.getFullYear();
+  const expectedMonth = reservedDate.getMonth() + 1;
+  const expectedDate = reservedDate.getDate();
+  const expectedDay = reservedDate.getDay();
+  const expectedJapaneseDay = getJapaneseDay(expectedDay);
+
+  renderExpectedDate(
+    expectedYear,
+    expectedMonth,
+    expectedDate,
+    expectedJapaneseDay,
+  );
 });
 
 function calculateTotalDaysPerPerson(
@@ -55,4 +61,46 @@ function calculateTotalDaysPerPerson(
   DaysPersonBorrow: number,
 ): number {
   return DaysLibraryDelivery + DaysLibraryHold + DaysPersonBorrow;
+}
+
+function getJapaneseDay(expectedDay: number): string {
+  let day = "";
+  switch (expectedDay) {
+    case 0:
+      day = "日";
+      break;
+    case 1:
+      day = "月";
+      break;
+    case 2:
+      day = "火";
+      break;
+    case 3:
+      day = "水";
+      break;
+    case 4:
+      day = "木";
+      break;
+    case 5:
+      day = "金";
+      break;
+    case 6:
+      day = "土";
+      break;
+  }
+
+  return day;
+}
+
+function renderExpectedDate(
+  year: number,
+  month: number,
+  date: number,
+  day: string,
+) {
+  const outputDom = document.getElementById("result");
+
+  if (outputDom) {
+    outputDom.textContent = `${year}年${month}月${date}日(${day})`;
+  }
 }
