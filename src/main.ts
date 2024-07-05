@@ -35,3 +35,17 @@ button?.addEventListener("click", (e) => {
     isOnBusinessDay,
   );
 });
+
+function calculateTotalDaysPerPerson(
+  DaysLibraryDelivery: number,
+  DaysLibraryHold: number,
+  DaysPersonBorrow: number,
+): number | undefined {
+  if (!DaysLibraryDelivery || !DaysLibraryDelivery || !DaysPersonBorrow) {
+    return;
+  }
+
+  return DaysLibraryDelivery + DaysLibraryHold + DaysPersonBorrow;
+}
+
+console.log(calculateTotalDaysPerPerson(1, 2, 3));
