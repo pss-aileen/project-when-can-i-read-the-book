@@ -5,6 +5,7 @@ const button = document.querySelector("button");
 button?.addEventListener("click", (e) => {
   e.preventDefault();
 
+  // 入力項目取得
   const infoForm = document.forms.namedItem("info") as HTMLFormElement;
   const reservedDate = new Date(
     (infoForm.elements.namedItem("reservedDate") as HTMLInputElement).value,
@@ -26,27 +27,33 @@ button?.addEventListener("click", (e) => {
       ? true
       : false;
 
+  // 入力項目から日数の決定
   const DaysLibraryDelivery: number = isSameLibrary ? 0 : 1;
   const DaysLibraryHold: number =
     holdPeriod === "shortest" ? 0 : holdPeriod === "normal" ? 1 : 7;
   const DaysPersonBorrow: number = isOnBusinessDay ? 14 : 15;
 
+  // 1サイクルの合計日数
   const totalDaysPerPerson = calculateTotalDaysPerPerson(
     DaysLibraryDelivery,
     DaysLibraryHold,
     DaysPersonBorrow,
   );
 
+  // 予約人数分の合計日数
   const totalDays: number = totalDaysPerPerson * reservedOrder;
 
+  // 予約日に合計日数を追加
   reservedDate.setDate(reservedDate.getDate() + totalDays);
 
+  // 予定日の日付情報をそれぞれ格納
   const expectedYear = reservedDate.getFullYear();
   const expectedMonth = reservedDate.getMonth() + 1;
   const expectedDate = reservedDate.getDate();
   const expectedDay = reservedDate.getDay();
   const expectedJapaneseDay = getJapaneseDay(expectedDay);
 
+  // 情報を元に日付をHTMLに表示
   renderExpectedDate(
     expectedYear,
     expectedMonth,

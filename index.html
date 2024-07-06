@@ -5,81 +5,130 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/vite.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>この本いつ読める？ When can I read the book?</title>
+  <title>この本いつ読めると？ When can I read the book?</title>
 </head>
 
 <body>
-  <section class="wrapper">
-    <h1>この本いつ読める？</h1>
+  <header class="header">
+    <div class="header__inner">
+      <div class="header-image">
+        <img src="./src//images/frog.svg" alt="考えるカエル" width="176" height="176">
+      </div>
 
-    <p>福岡市図書館で本を予約した際・最短、最長でいつ借りれるかを簡易的に計算できるサイトです。</p>
+      <h1 class="header-title">この本いつ読めると？</h1>
+      <p class="header-lead">福岡市総合図書館の本を予約し、いつ受け取れるかを簡易的に計算できるサイトです。<span>個人で制作したWebサイトで、福岡市総合図書館とは一切関係ありません。</span>
+      </p>
 
+    </div>
+  </header>
+
+
+  <div class="main-contents">
     <form name="info">
-      <section class="content">
+      <section class="basic-info content">
         <h2>基本情報</h2>
-        <table>
+        <p>あなたが予約日として選択した日が、予約0番目の人（今予約している人）の割り当て日としてカウントがスタートします。</p>
+        <table class="infoTable">
           <tr>
-            <th>予約日</th>
-            <td><input type="date" name="reservedDate" value="2024-07-05"></td>
+            <th><label for="reservedDate">予約日</label></th>
+            <td><input type="date" name="reservedDate" value="2024-07-05" id="reservedDate"></td>
           </tr>
           <tr>
-            <th>予約順</th>
-            <td><input type="number" name="reservedOrder" min="1" max="999" value="1"></td>
+            <th><label for="reservedOrder">予約順</label></th>
+            <td><input type="number" name="reservedOrder" min="1" max="999" value="1" id="reservedOrder"></td>
           </tr>
         </table>
-      </section>
+        <p class="result-date">
+          <span class="result-date__title">最短で本を受け取れる日</span>
+          <span id="result" class="result-date__content">20XX年X月X日（X）</span>
+        </p>
+        <button type="submit" class="button">計算</button>
 
-      <section class="content">
-        <h2>オプション</h2>
-        <p>デフォルトは最短になっています。最長を確認したい場合は全て最後の選択肢を選んでください。</p>
-        <fieldset>
-          <legend>同じ図書館か？</legend>
-          <label>
-            <input type="radio" name="isSameLibrary" value="true" checked>
-            <span>同じ図書館</span>
-          </label>
-          <label>
-            <input type="radio" name="isSameLibrary" value="false">
-            <span>違う図書館</span>
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>取り置き期間は？</legend>
-          <label>
-            <input type="radio" name="holdPeriod" value="shortest" checked>
-            <span>最短（予約連絡前、割り当て当日）</span>
-          </label>
-          <label>
-            <input type="radio" name="holdPeriod" value="normal">
-            <span>通常（予約連絡日）</span>
-          </label>
-          <label>
-            <input type="radio" name="holdPeriod" value="longest">
-            <span>最長（取り置き期間最終日）</span>
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>返却日は？</legend>
-          <label>
-            <input type="radio" name="isOnBusinessDay" value="true" checked>
-            <span>営業日</span>
-          </label>
-          <label>
-            <input type="radio" name="isOnBusinessDay" value="false">
-            <span>休館日あり</span>
-          </label>
-        </fieldset>
+        <section class="option">
+          <h3>オプション</h3>
+          <p>デフォルトは最短になっています。最長を確認したい場合は全ての選択肢で最後の項目を選択してください。</p>
+          <fieldset>
+            <legend>受け取りは別の図書館か？</legend>
+            <ul>
+              <li>
+                <label>
+                  <input type="radio" name="isSameLibrary" value="true" checked>
+                  <span>同じ図書館</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="isSameLibrary" value="false">
+                  <span>違う図書館</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset>
+            <legend>取り置き期間は？</legend>
+            <ul>
+              <li>
+                <label>
+                  <input type="radio" name="holdPeriod" value="shortest" checked>
+                  <span>最短（予約連絡前、割り当て日）</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="holdPeriod" value="normal">
+                  <span>通常（予約連絡日）</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="holdPeriod" value="longest">
+                  <span>最長（取り置き期間最終日）</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset>
+            <legend>返却日は？</legend>
+            <ul>
+              <li>
+                <label>
+                  <input type="radio" name="isOnBusinessDay" value="true" checked>
+                  <span>営業日</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="isOnBusinessDay" value="false">
+                  <span>休館日あり</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+        </section>
       </section>
-
-      <button type="submit">計算</button>
     </form>
 
-    <div class="content">
-      <h2>結果</h2>
-      <p id="result">2024年7月5日（金）</p>
-    </div>
 
-  </section><!--wrapper-->
+    <section class="caution content">
+      <h3>注意</h3>
+      <ul class="caution-list">
+        <li>個人の予測に基づく計算ですので、あくまで目安としてご確認ください。</li>
+        <li>図書館が同じ場合は回送日は0日、違う場合は回送日が1日追加されます。</li>
+        <li>取り置き期間は、割り当て当日は0日、予約連絡日は1日、取り置き期間最終日は7日追加されます。</li>
+        <li>返却日が営業日の場合は0日、休館日の時は1日追加されます。</li>
+        <li>各予約者の回送期間から取り置き期間、貸出期間（最大14日を基準）を合計したものを予約人数で掛け合わせた結果を出力しています。</li>
+      </ul>
+    </section>
+
+    </section>
+
+  </div><!--contents-wrapper-->
+
+
+  <footer class="footer">
+    <small>&copy; この本いつ読めると？</small>
+  </footer>
+
   <script type="module" src="/src/main.ts"></script>
 </body>
 
