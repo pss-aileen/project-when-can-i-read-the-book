@@ -1,19 +1,19 @@
 {
-    "name": "\u3053\u306e\u672c\u3044\u3064\u8aad\u3081\u308b\u3068\uff1f",
-    "short_name": "\u3053\u306e\u672c\u3044\u3064\u8aad\u3081\u308b\u3068\uff1f",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+  "name": "\u3053\u306e\u672c\u3044\u3064\u8aad\u3081\u308b\u3068\uff1f",
+  "short_name": "\u3053\u306e\u672c\u3044\u3064\u8aad\u3081\u308b\u3068\uff1f",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
 }
