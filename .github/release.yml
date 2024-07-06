@@ -1,0 +1,15 @@
+# .github/release.yml
+changelog:
+  categories:
+    - title: 🐛 Bug Fix
+      labels:
+        - 🐛 fix
+    - title: 🎨 Style
+      labels:
+        - 🎨 style
+    - title: 📘 Docs
+      labels:
+        - 📘 docs
+    - title: 📁 Other
+      labels:
+        - "*"
