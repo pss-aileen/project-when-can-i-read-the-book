@@ -1,21 +1,12 @@
+import calculateTotalDaysPerPerson from "./calculateTotalDaysPerPerson";
+import getJapaneseDay from "./getJapaneseDay";
+import renderExpectedDate from "./renderExpectedDate";
+import setTodayDate from "./setTodayDate";
 import "./style.css";
 
+setTodayDate();
+
 const button = document.querySelector("button");
-
-const infoForm = document.forms.namedItem("info") as HTMLFormElement;
-const reservedDate = infoForm.elements.namedItem(
-  "reservedDate",
-) as HTMLInputElement;
-
-const today = new Date();
-const todayYear = today.getFullYear();
-
-// toString() でオブジェクトを文字列表現に変更する、null や undefined には使えない
-// String() はどんな値も文字列に変換
-const todayMonth = (today.getMonth() + 1).toString().padStart(2, "0");
-const todayDate = today.getDate().toString().padStart(2, "0");
-
-reservedDate.value = `${todayYear}-${todayMonth}-${todayDate}`;
 
 button?.addEventListener("click", (e) => {
   e.preventDefault();
@@ -76,53 +67,3 @@ button?.addEventListener("click", (e) => {
     expectedJapaneseDay,
   );
 });
-
-function calculateTotalDaysPerPerson(
-  DaysLibraryDelivery: number,
-  DaysLibraryHold: number,
-  DaysPersonBorrow: number,
-): number {
-  return DaysLibraryDelivery + DaysLibraryHold + DaysPersonBorrow;
-}
-
-function getJapaneseDay(expectedDay: number): string {
-  let day = "";
-  switch (expectedDay) {
-    case 0:
-      day = "日";
-      break;
-    case 1:
-      day = "月";
-      break;
-    case 2:
-      day = "火";
-      break;
-    case 3:
-      day = "水";
-      break;
-    case 4:
-      day = "木";
-      break;
-    case 5:
-      day = "金";
-      break;
-    case 6:
-      day = "土";
-      break;
-  }
-
-  return day;
-}
-
-function renderExpectedDate(
-  year: number,
-  month: number,
-  date: number,
-  day: string,
-) {
-  const outputDom = document.getElementById("result");
-
-  if (outputDom) {
-    outputDom.textContent = `${year}年${month}月${date}日(${day})`;
-  }
-}
