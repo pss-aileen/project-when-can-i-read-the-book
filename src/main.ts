@@ -1,7 +1,7 @@
-import calculateTotalDaysPerPerson from "./calculateTotalDaysPerPerson";
-import getJapaneseDay from "./getJapaneseDay";
-import renderExpectedDate from "./renderExpectedDate";
-import setTodayDate from "./setTodayDate";
+import calculateTotalDaysPerPerson from "./utils/calculateTotalDaysPerPerson";
+import getJapaneseDay from "./utils/getJapaneseDay";
+import renderExpectedDate from "./utils/renderExpectedDate";
+import setTodayDate from "./utils/setTodayDate";
 import "./style.css";
 
 setTodayDate();
