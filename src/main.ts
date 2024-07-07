@@ -1,3 +1,4 @@
+import calculateTotalDaysPerPerson from "./calculateTotalDaysPerPerson";
 import getJapaneseDay from "./getJapaneseDay";
 import renderExpectedDate from "./renderExpectedDate";
 import setTodayDate from "./setTodayDate";
@@ -66,11 +67,3 @@ button?.addEventListener("click", (e) => {
     expectedJapaneseDay,
   );
 });
-
-function calculateTotalDaysPerPerson(
-  DaysLibraryDelivery: number,
-  DaysLibraryHold: number,
-  DaysPersonBorrow: number,
-): number {
-  return DaysLibraryDelivery + DaysLibraryHold + DaysPersonBorrow;
-}
